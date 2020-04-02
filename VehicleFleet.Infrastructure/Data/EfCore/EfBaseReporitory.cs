@@ -6,15 +6,15 @@ using VehicleFleet.Domain.interfaces;
 
 namespace VehicleFleet.Infrastructure.Data.EfCore
 {
-    public class EfReporitory<T> : IReporitory<T> where T : BaseEntity
+    public abstract class EfBaseReporitory<T> : IReporitory<T> where T : BaseEntity
     {
-        private readonly ILogger<EfReporitory<T>> _logger;
         private readonly VehicleFleetContext _context;
+        private readonly ILogger<EfBaseReporitory<T>> _logger;
 
-        public EfReporitory(ILogger<EfReporitory<T>> logger, VehicleFleetContext context)
+        public EfBaseReporitory(VehicleFleetContext context, ILogger<EfBaseReporitory<T>> logger)
         {
-            _logger = logger;
             _context = context;
+            _logger = logger;
         }
 
         public virtual IQueryable<T> GetAll()
