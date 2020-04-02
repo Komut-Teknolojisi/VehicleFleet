@@ -4,7 +4,7 @@ using VehicleFleet.Domain.Entities;
 
 namespace VehicleFleet.Domain.interfaces
 {
-    public interface IReporitory<T> where T : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
         IQueryable<T> GetAll();
 

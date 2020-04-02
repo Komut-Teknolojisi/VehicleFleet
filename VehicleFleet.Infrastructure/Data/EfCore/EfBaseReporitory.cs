@@ -6,7 +6,7 @@ using VehicleFleet.Domain.interfaces;
 
 namespace VehicleFleet.Infrastructure.Data.EfCore
 {
-    public abstract class EfBaseReporitory<T> : IReporitory<T> where T : BaseEntity
+    public class EfBaseReporitory<T> : IRepository<T> where T : BaseEntity
     {
         private readonly VehicleFleetContext _context;
         private readonly ILogger<EfBaseReporitory<T>> _logger;
@@ -31,7 +31,6 @@ namespace VehicleFleet.Infrastructure.Data.EfCore
         {
             try
             {
-                entity.Created = DateTime.Now;
                 _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
                 _context.SaveChanges();
 

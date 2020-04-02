@@ -6,9 +6,9 @@ using VehicleFleet.Domain.Vehicles;
 
 namespace VehicleFleet.Infrastructure.Data.EfCore
 {
-    public class EfModelRepository : EfBaseReporitory<Model>, IModelRepository
+    public class EfVehicleRepository : EfBaseReporitory<Vehicle>, IVehicleRepository
     {
-        public EfModelRepository(VehicleFleetContext context, ILogger<EfBaseReporitory<Model>> logger) : base(context, logger)
+        public EfVehicleRepository(VehicleFleetContext context, ILogger<EfBaseReporitory<Vehicle>> logger) : base(context, logger)
         {
 
         }
