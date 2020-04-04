@@ -15,7 +15,6 @@ namespace VehicleFleet.Application
 
             CreateMap<Brand, BrandDto>();
 
-
             CreateMap<Model, ModelDto>()
                 .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.BrandName))
                 ;
