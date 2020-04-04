@@ -71,21 +71,5 @@ namespace VehicleFleet.WebApi.Controllers
 
             return result;
         }
-
-        private void test()
-        {
-            VehicleDto vehicleDto = new VehicleDto()
-            {
-                Age = 2020,
-                BrandName = "Ferrari",
-                ModelName = "F40",
-                PlateNumber = "39BB39"
-            };
-
-            _vehicleService.Add(vehicleDto);
-            _memoryCache.Remove(CacheNames.Vehicles.ToString());
-            _memoryCache.Remove(CacheNames.Brands.ToString());
-            _memoryCache.Remove(CacheNames.Models.ToString());
-        }
     }
 }
