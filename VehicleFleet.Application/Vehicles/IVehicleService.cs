@@ -5,6 +5,8 @@ namespace VehicleFleet.Application.Vehicles
 {
     public interface IVehicleService
     {
+        VehicleDto GetById(Guid id);
+
         List<VehicleDto> GetVehicles();
 
         List<BrandDto> GetBrands();

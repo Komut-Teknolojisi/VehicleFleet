@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VehicleFleet.Domain.interfaces;
 using VehicleFleet.Domain.Vehicles;
 using VehicleFleet.Infrastructure.Data;
 using VehicleFleet.Infrastructure.Data.EfCore;
@@ -36,7 +34,6 @@ namespace VehicleFleet.Application.Vehicles
             {
                 try
                 {
-
                     Brand brand = _brandReporitory.GetById(vehicle.BrandId);
                     if (brand == null)
                     {
@@ -45,7 +42,6 @@ namespace VehicleFleet.Application.Vehicles
                         {
                             throw new Exception("Marka eklenemedi!");
                         }
-
                     }
 
                     Model model = _modelReporitory.GetById(vehicle.ModelId);
@@ -98,6 +94,14 @@ namespace VehicleFleet.Application.Vehicles
             return _mapper.Map<List<BrandDto>>(brands);
         }
 
+        public VehicleDto GetById(Guid id)
+        {
+            Vehicle vehicle = _vehicleReporitory.GetAll().OrderBy(x => x.Created).FirstOrDefault(x => x.Id == id);
+
+            VehicleDto vehicleDto = _mapper.Map<VehicleDto>(vehicle);
+            return vehicleDto;
+        }
+
         public List<ModelDto> GetModels()
         {
             List<Model> models = _modelReporitory.GetAll().OrderBy(x => x.Created).ToList();
@@ -107,7 +111,7 @@ namespace VehicleFleet.Application.Vehicles
 
         public List<VehicleDto> GetVehicles()
         {
-            List<Vehicle> vehicles = _vehicleReporitory.GetAll().OrderBy(x => x.Created).ToList();
+            List<Vehicle> vehicles = _vehicleReporitory.GetAll().OrderByDescending(x => x.Created).ToList();
 
             List<VehicleDto> vehicleDtos = _mapper.Map<List<VehicleDto>>(vehicles);
             return vehicleDtos;
