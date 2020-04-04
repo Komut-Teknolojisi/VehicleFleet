@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using VehicleFleet.Domain.Entities;
 
 namespace VehicleFleet.Domain.Vehicles
@@ -12,6 +11,7 @@ namespace VehicleFleet.Domain.Vehicles
 
         public virtual Brand Brand { get; set; }
         public virtual ICollection<Vehicle> Vehicles { get; set; }
+
         public static Model Create(Brand brand, string modelName)
         {
             Model model = new Model
