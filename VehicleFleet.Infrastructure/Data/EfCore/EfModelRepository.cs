@@ -1,7 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using VehicleFleet.Domain.Vehicles;
 
 namespace VehicleFleet.Infrastructure.Data.EfCore
@@ -10,7 +7,6 @@ namespace VehicleFleet.Infrastructure.Data.EfCore
     {
         public EfModelRepository(VehicleFleetContext context, ILogger<EfBaseReporitory<Model>> logger) : base(context, logger)
         {
-
         }
     }
 }

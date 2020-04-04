@@ -50,6 +50,7 @@ namespace VehicleFleet.Infrastructure.Data.EfCore
             {
                 T entity = _context.Set<T>().Find(id);
                 _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                _context.SaveChanges();
 
                 _logger.LogInformation("entity deleted", id);
                 return true;
